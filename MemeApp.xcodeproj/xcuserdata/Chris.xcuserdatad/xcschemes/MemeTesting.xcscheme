@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83E4BC7C1B57521E0077AAB3"
-            BuildableName = "MemeTesting.app"
-            BlueprintName = "MemeTesting"
-            ReferencedContainer = "container:MemeTesting.xcodeproj">
+            BuildableName = "MemeApp.app"
+            BlueprintName = "MemeApp"
+            ReferencedContainer = "container:MemeApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83E4BC7C1B57521E0077AAB3"
-            BuildableName = "MemeTesting.app"
-            BlueprintName = "MemeTesting"
-            ReferencedContainer = "container:MemeTesting.xcodeproj">
+            BuildableName = "MemeApp.app"
+            BlueprintName = "MemeApp"
+            ReferencedContainer = "container:MemeApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

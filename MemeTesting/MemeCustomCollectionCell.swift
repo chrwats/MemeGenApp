@@ -12,7 +12,7 @@ import UIKit
 class MemeCustomCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var memedImage: UIImageView!
-    @IBOutlet weak var topText: UILabel!
-    @IBOutlet weak var bottomText: UILabel!
+    @IBOutlet weak var top: UILabel!
+    @IBOutlet weak var bottom: UILabel!
     
 }
