@@ -360,6 +360,7 @@
                     </view>
                     <connections>
                         <outlet property="imageViewCell" destination="w9F-wX-jiU" id="PLY-n1-2n0"/>
+                        <segue destination="vXZ-lx-hvc" kind="presentation" identifier="detailEditorSegue" id="raC-WD-FfR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ck-9l-kOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -373,4 +374,7 @@
         <image name="Gallery-50.png" width="50" height="50"/>
         <image name="TableViewIcon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="raC-WD-FfR"/>
+    </inferredMetricsTieBreakers>
 </document>
