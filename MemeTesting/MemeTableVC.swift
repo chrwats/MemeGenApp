@@ -19,7 +19,12 @@ let cellReuseIdentifier = "TableViewReuseIdentifier"
 
 
     var memes: [Meme]!
-
+    let memeCellTextAttributes = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 14)!,
+        NSStrokeWidthAttributeName: NSNumber(float: -3.0)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +39,7 @@ let cellReuseIdentifier = "TableViewReuseIdentifier"
     }
     override func viewDidAppear(animated: Bool) {
         if((UIApplication.sharedApplication().delegate as! AppDelegate).memes.count<=0){
-            self.performSegueWithIdentifier("memeEditorSeque", sender: nil)
+            performSegueWithIdentifier("memeEditorSeque", sender: nil)
         }
     }
     
@@ -44,19 +49,33 @@ let cellReuseIdentifier = "TableViewReuseIdentifier"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! UITableViewCell
-        let sentMeme = memes[indexPath.row]
-        cell.imageView?.image = sentMeme.memedImage
-        cell.imageView?.sizeToFit()
-        cell.textLabel?.text = sentMeme.top
-        cell.detailTextLabel?.text = sentMeme.bottom
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! MemeCustomTableCell
         
+        let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item]
+        cell.memedImage.image = meme.image
+        cell.top.text = meme.top
+        cell.bottom.text = meme.bottom
+        cell.top.defaultTextAttributes = memeCellTextAttributes
+        cell.bottom.defaultTextAttributes = memeCellTextAttributes
+        cell.bottomCellText.text = meme.bottom
+        cell.topCellText.text = meme.top
+        cell.top.textAlignment = .Center
+        cell.bottom.textAlignment = .Center
+        let imageView = UIImageView(image: meme.image)
         return cell
+        
+//        let sentMeme = memes[indexPath.row]
+//        cell.imageView?.image = sentMeme.image
+//        //cell.imageView?.sizeToFit()
+//        cell.textLabel?.text = sentMeme.top
+//        cell.detailTextLabel?.text = sentMeme.bottom
+//        
+//        return cell
     }
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let memeDetailsController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailVC") as! MemeDetailVC
+        let memeDetailsController = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailVC") as! MemeDetailVC
         memeDetailsController.meme = memes[indexPath.row]
         
         // Pass the choosed index to the MemeDetailsViewController for deletion purpose "if requested by user"
@@ -65,7 +84,7 @@ let cellReuseIdentifier = "TableViewReuseIdentifier"
         // To hide the bottom bar when pushed
         memeDetailsController.hidesBottomBarWhenPushed = true
 
-        self.navigationController!.pushViewController(memeDetailsController, animated: true)
+        navigationController!.pushViewController(memeDetailsController, animated: true)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -75,7 +94,7 @@ let cellReuseIdentifier = "TableViewReuseIdentifier"
     @IBAction func addMemeButton(sender: AnyObject) {
         let storyboard = self.storyboard
         let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeEditorVC") as! UIViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        presentViewController(vc, animated: true, completion: nil)
 
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -85,7 +104,7 @@ let cellReuseIdentifier = "TableViewReuseIdentifier"
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("MemeDetailVC") as! UIViewController
-            self.presentViewController(vc, animated: true, completion: nil)
+            presentViewController(vc, animated: true, completion: nil)
     }
     }
 }

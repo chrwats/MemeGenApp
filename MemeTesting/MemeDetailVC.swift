@@ -19,14 +19,14 @@ class MemeDetailVC: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.imageViewCell!.image = meme.memedImage
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title:"Delete", style: UIBarButtonItemStyle.Plain, target: self, action: "deleteButton")
+        imageViewCell!.image = meme.memedImage
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title:"Delete", style: UIBarButtonItemStyle.Plain, target: self, action: "deleteButton")
     }
     
     // Delete A Meme function
     func deleteADetailedMeme() {
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(memeIndex!)
-        self.imageViewCell!.image = nil
+        imageViewCell!.image = nil
     }
     
     //TODO: Add in the edit functionality
@@ -48,14 +48,14 @@ class MemeDetailVC: UIViewController {
         }
         alertController.addAction(destroyAction)
         
-        self.presentViewController(alertController, animated: true) {
+        presentViewController(alertController, animated: true) {
             // ...
         }
     }
     
     func segueToMemeEditorWithDeletion() {
         let controller = storyboard!.instantiateViewControllerWithIdentifier("MemeEditorVC") as! MemeEditorVC
-        self.presentViewController(controller, animated: true)
+        presentViewController(controller, animated: true)
             {(action) in self.deleteADetailedMeme()}
     }
 }

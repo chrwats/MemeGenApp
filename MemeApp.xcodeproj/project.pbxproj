@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		836110DF1B643617002C897D /* wallpaper-icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 836110DE1B643617002C897D /* wallpaper-icon.jpg */; };
-		8366159E1B77E18600B1E453 /* SingletonMemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366159D1B77E18600B1E453 /* SingletonMemes.swift */; };
+		836C0BB61B7E495A004340A1 /* MemeCustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836C0BB51B7E495A004340A1 /* MemeCustomTableCell.swift */; };
 		836E5C2D1B7AD624006035F0 /* collection_30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = 836E5C251B7AD623006035F0 /* collection_30x30.png */; };
 		836E5C2E1B7AD624006035F0 /* collection_60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 836E5C261B7AD623006035F0 /* collection_60x60.png */; };
 		836E5C2F1B7AD624006035F0 /* table_30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = 836E5C271B7AD623006035F0 /* table_30x30.png */; };
@@ -47,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		836110DE1B643617002C897D /* wallpaper-icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wallpaper-icon.jpg"; sourceTree = "<group>"; };
-		8366159D1B77E18600B1E453 /* SingletonMemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonMemes.swift; sourceTree = "<group>"; };
+		836C0BB51B7E495A004340A1 /* MemeCustomTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCustomTableCell.swift; sourceTree = "<group>"; };
 		836E5C251B7AD623006035F0 /* collection_30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection_30x30.png; sourceTree = "<group>"; };
 		836E5C261B7AD623006035F0 /* collection_60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection_60x60.png; sourceTree = "<group>"; };
 		836E5C271B7AD623006035F0 /* table_30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_30x30.png; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 				83E4BC861B57521E0077AAB3 /* Main.storyboard */,
 				83E4BCA21B61E5DB0077AAB3 /* Meme.swift */,
 				83707FB81B7466A9007714F1 /* MemeDetailVC.swift */,
-				8366159D1B77E18600B1E453 /* SingletonMemes.swift */,
 				83E4BC891B57521E0077AAB3 /* Images.xcassets */,
 				83E4BC8B1B57521E0077AAB3 /* LaunchScreen.xib */,
 				83E4BC801B57521E0077AAB3 /* Supporting Files */,
@@ -152,6 +151,7 @@
 				836110DE1B643617002C897D /* wallpaper-icon.jpg */,
 				83C86C661B643A5B00802EC5 /* camIcon-.jpg */,
 				83707FB61B746374007714F1 /* MemeCustomCollectionCell.swift */,
+				836C0BB51B7E495A004340A1 /* MemeCustomTableCell.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -290,9 +290,9 @@
 				83707FB51B7410C1007714F1 /* MemeCollectionVC.swift in Sources */,
 				83E4BCA31B61E5DB0077AAB3 /* Meme.swift in Sources */,
 				83707FB71B746374007714F1 /* MemeCustomCollectionCell.swift in Sources */,
+				836C0BB61B7E495A004340A1 /* MemeCustomTableCell.swift in Sources */,
 				83707FB91B7466A9007714F1 /* MemeDetailVC.swift in Sources */,
 				83E4BC851B57521E0077AAB3 /* memeEditorVC.swift in Sources */,
-				8366159E1B77E18600B1E453 /* SingletonMemes.swift in Sources */,
 				83707FB31B741091007714F1 /* MemeTableVC.swift in Sources */,
 				83E4BC831B57521E0077AAB3 /* AppDelegate.swift in Sources */,
 			);

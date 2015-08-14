@@ -15,17 +15,23 @@ class MemeCollectionVC: UICollectionViewController, UICollectionViewDataSource, 
 
     let cellReuseIdentifier = "MemeCollectionReuseIdentifier"
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    
+    let memeCellTextAttributes = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 14)!,
+        NSStrokeWidthAttributeName: NSNumber(float: -3.0)
+        ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.backgroundColor = UIColor.clearColor()
+        //backgroundColor = UIColor.clearColor()
         if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count == 0 {
             let storyboard = self.storyboard
             let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeEditorVC") as! UIViewController
-            self.presentViewController(vc, animated: true, completion: nil)
+            presentViewController(vc, animated: true, completion: nil)
         }
         let space: CGFloat = 3.0
-        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        let dimension = (view.frame.size.width - (3 * space)) / 3.0
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = 0
@@ -39,7 +45,7 @@ class MemeCollectionVC: UICollectionViewController, UICollectionViewDataSource, 
     @IBAction func AddMemeButton(sender: AnyObject) {
         let storyboard = self.storyboard
         let vc = storyboard!.instantiateViewControllerWithIdentifier("MemeEditorVC") as! UIViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        presentViewController(vc, animated: true, completion: nil)
 
     }
     
@@ -52,43 +58,27 @@ class MemeCollectionVC: UICollectionViewController, UICollectionViewDataSource, 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! MemeCustomCollectionCell
         let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.item]
-        cell.memedImage.image = meme.memedImage
-
-        //cell.setText(meme.topText, bottomString: meme.bottomText)
+        cell.memedImage.image = meme.image
+        cell.top.text = meme.top
+        cell.bottom.text = meme.bottom
+        cell.top.defaultTextAttributes = memeCellTextAttributes
+        cell.bottom.defaultTextAttributes = memeCellTextAttributes
+        cell.top.textAlignment = .Center
+        cell.bottom.textAlignment = .Center
         let imageView = UIImageView(image: meme.image)
-        cell.backgroundView = imageView
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
         memes = (UIApplication.sharedApplication().delegate as! AppDelegate).memes
-        
         // Show the selected meme in a large scaled view called MemeDetailsViewController
-        let memeDetailsController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailVC") as! MemeDetailVC
+        let memeDetailsController = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailVC") as! MemeDetailVC
+       
         memeDetailsController.hidesBottomBarWhenPushed = true
-        memeDetailsController.meme = self.memes[indexPath.item]
-        
-        // Pass the choosed index to the MemeDetailsViewController for deletion purpose "if requested by user"
+        memeDetailsController.meme = memes[indexPath.item]
         memeDetailsController.memeIndex = indexPath.item
-        self.navigationController!.pushViewController(memeDetailsController, animated: true)    }
-    
-    // Get the cell's size in the CollectionView Grid
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        let memeDimension = self.view.frame.size.width / 4.5
-//
-//        return CGSizeMake(memeDimension, memeDimension)
-//    }
-    
-    // Get the margins to apply to the items in the CollectionView
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//        let leftRightInset = self.view.frame.size.width / 7.0
-//        return UIEdgeInsetsMake(0, leftRightInset, 0, leftRightInset)
-//    }
+        navigationController!.pushViewController(memeDetailsController, animated: true)    }
    
-    
-
-    
 }
 
 
